@@ -4,13 +4,13 @@ provider "aws" {
 
 locals {
   region      = "us-east-1"
-  name        = "managed-grafana-ex-${replace(basename(path.cwd), "_", "-")}"
+  name        = "amg-ex-${replace(basename(path.cwd), "_", "-")}"
   description = "AWS Managed Grafana service for ${local.name}"
 
   tags = {
     Name       = local.name
     Example    = local.name
-    Repository = "https://github.com/clowdhaus/terraform-aws-managed-grafana"
+    Repository = "https://github.com/clowdhaus/terraform-aws-managed-service-grafana"
   }
 }
 
