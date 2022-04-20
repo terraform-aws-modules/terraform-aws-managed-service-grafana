@@ -9,6 +9,7 @@ on:
     paths:
       - '**.tf'
       - '!examples/**.tf'
+      - README.md
 
 jobs:
   release:
