@@ -1,14 +1,5 @@
 # AWS Managed Service for Grafana (AMG) Terraform module
 
-## ⚠️ Module has move to `terraform-aws-modules`
-
-This module has moved to the terraform-aws-modules organization. Users will need to update their module source:
-
-```diff
-- source = "clowdhaus/managed-service-grafana/aws"
-+ source = "terraform-aws-modules/managed-service-grafana/aws"
-```
-
 Terraform module which creates AWS Managed Service for Grafana (AMG) resources.
 
 ## Usage
