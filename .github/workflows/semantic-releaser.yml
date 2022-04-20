@@ -3,13 +3,13 @@ name: Release
 # TODO - delete after repo move
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
     paths:
       - '**.tf'
       - '!examples/**.tf'
-      - README.md
 
 jobs:
   release:
