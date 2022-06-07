@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.0](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/compare/v1.1.0...v1.2.0) (2022-06-07)
+
+
+### Features
+
+* Add support for Grafana workspace tags ([#2](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/issues/2)) ([35b32e9](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/commit/35b32e9d4e3adb306f8b5e7315ee5c900fb88b4b))
+
 ## [1.1.0](https://github.com/clowdhaus/terraform-aws-managed-service-grafana/compare/v1.0.1...v1.1.0) (2022-04-20)
 
 
