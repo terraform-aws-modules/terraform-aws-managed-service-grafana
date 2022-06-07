@@ -20,8 +20,10 @@ resource "aws_grafana_workspace" "this" {
   organizational_units      = var.organizational_units
   role_arn                  = var.create_iam_role ? aws_iam_role.this[0].arn : var.iam_role_arn
   stack_set_name            = coalesce(var.stack_set_name, var.name)
+
+  tags = var.tags
 }
-# No-op to trigger release
+
 ################################################################################
 # Workspace IAM Role
 ################################################################################
