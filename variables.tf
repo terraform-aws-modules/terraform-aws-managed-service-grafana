@@ -45,7 +45,7 @@ variable "permission_type" {
 }
 
 variable "data_sources" {
-  description = "The data sources for the workspace. Valid values are `AMAZON_OPENSEARCH_SERVICE`, `CLOUDWATCH`, `PROMETHEUS`, `XRAY`, `TIMESTREAM`, `SITEWISE`"
+  description = "The data sources for the workspace. Valid values are `AMAZON_OPENSEARCH_SERVICE`, `ATHENA`, `CLOUDWATCH`, `PROMETHEUS`, `REDSHIFT`, `SITEWISE`, `TIMESTREAM`, `XRAY`"
   type        = list(string)
   default     = []
 }
@@ -130,6 +130,12 @@ variable "iam_role_permissions_boundary" {
   description = "ARN of the policy that is used to set the permissions boundary for the IAM role"
   type        = string
   default     = null
+}
+
+variable "iam_role_policy_arns" {
+  description = "List of ARNs of IAM policies to attach to the workspace IAM role"
+  type        = list(string)
+  default     = []
 }
 
 variable "iam_role_tags" {

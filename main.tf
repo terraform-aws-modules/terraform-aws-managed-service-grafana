@@ -1,4 +1,5 @@
 data "aws_partition" "current" {}
+data "aws_caller_identity" "current" {}
 
 ################################################################################
 # Workspace
@@ -29,11 +30,15 @@ resource "aws_grafana_workspace" "this" {
 ################################################################################
 
 locals {
+  create_role   = var.create && var.create_iam_role
   iam_role_name = coalesce(var.iam_role_name, var.name)
+
+  create_account_policy = local.create_role && var.account_access_type == "CURRENT_ACCOUNT"
+  create_custom_policy  = contains(var.data_sources, "CLOUDWATCH") || contains(var.data_sources, "AMAZON_OPENSEARCH_SERVICE") || contains(var.data_sources, "PROMETHEUS") || contains(var.notification_destinations, "SNS")
 }
 
 data "aws_iam_policy_document" "assume" {
-  count = var.create && var.create_iam_role ? 1 : 0
+  count = local.create_role ? 1 : 0
 
   statement {
     sid     = "GrafanaAssume"
@@ -48,7 +53,7 @@ data "aws_iam_policy_document" "assume" {
 }
 
 resource "aws_iam_role" "this" {
-  count = var.create && var.create_iam_role ? 1 : 0
+  count = local.create_role ? 1 : 0
 
   name        = var.use_iam_role_name_prefix ? null : local.iam_role_name
   name_prefix = var.use_iam_role_name_prefix ? "${local.iam_role_name}-" : null
@@ -61,6 +66,183 @@ resource "aws_iam_role" "this" {
   permissions_boundary  = var.iam_role_permissions_boundary
 
   tags = merge(var.tags, var.iam_role_tags)
+}
+
+resource "aws_iam_role_policy_attachment" "additional" {
+  for_each = { for k, v in var.iam_role_policy_arns : k => v if local.create_role }
+
+  role       = aws_iam_role.this[0].name
+  policy_arn = each.value
+}
+
+# https://docs.aws.amazon.com/grafana/latest/userguide/AMG-manage-permissions.html
+data "aws_iam_policy_document" "this" {
+  count = local.create_account_policy ? 1 : 0
+
+  # CloudWatch
+  dynamic "statement" {
+    for_each = contains(var.data_sources, "CLOUDWATCH") ? [1] : []
+
+    content {
+      sid = "AllowReadingMetricsFromCloudWatch"
+      actions = [
+        "cloudwatch:DescribeAlarmsForMetric",
+        "cloudwatch:DescribeAlarmHistory",
+        "cloudwatch:DescribeAlarms",
+        "cloudwatch:ListMetrics",
+        "cloudwatch:GetMetricStatistics",
+        "cloudwatch:GetMetricData",
+      ]
+      resources = ["*"]
+    }
+  }
+
+  dynamic "statement" {
+    for_each = contains(var.data_sources, "CLOUDWATCH") ? [1] : []
+
+    content {
+      sid = "AllowReadingLogsFromCloudWatch"
+      actions = [
+        "logs:DescribeLogGroups",
+        "logs:GetLogGroupFields",
+        "logs:StartQuery",
+        "logs:StopQuery",
+        "logs:GetQueryResults",
+        "logs:GetLogEvents",
+      ]
+      resources = ["*"]
+    }
+  }
+
+  dynamic "statement" {
+    for_each = contains(var.data_sources, "CLOUDWATCH") ? [1] : []
+
+    content {
+      sid = "AllowReadingTagsInstancesRegionsFromEC2"
+      actions = [
+        "ec2:DescribeTags",
+        "ec2:DescribeInstances",
+        "ec2:DescribeRegions",
+      ]
+      resources = ["*"]
+    }
+  }
+
+  dynamic "statement" {
+    for_each = contains(var.data_sources, "CLOUDWATCH") ? [1] : []
+
+    content {
+      sid = "AllowReadingResourcesForTags"
+      actions = [
+        "tag:GetResources",
+      ]
+      resources = ["*"]
+    }
+  }
+
+  # OpenSearch
+  dynamic "statement" {
+    for_each = contains(var.data_sources, "AMAZON_OPENSEARCH_SERVICE") ? [1] : []
+
+    content {
+      actions = [
+        "es:ESHttpGet",
+        "es:DescribeElasticsearchDomains",
+        "es:ListDomainNames",
+      ]
+      resources = ["*"]
+    }
+  }
+
+  dynamic "statement" {
+    for_each = contains(var.data_sources, "AMAZON_OPENSEARCH_SERVICE") ? [1] : []
+
+    content {
+      actions = [
+        "es:ESHttpPost",
+      ]
+      resources = [
+        "arn:${data.aws_partition.current.partition}:es:*:*:domain/*/_msearch*",
+        "arn:${data.aws_partition.current.partition}:es:*:*:domain/*/_opendistro/_ppl",
+      ]
+    }
+  }
+
+  # Prometheus
+  dynamic "statement" {
+    for_each = contains(var.data_sources, "PROMETHEUS") ? [1] : []
+
+    content {
+      actions = [
+        "aps:ListWorkspaces",
+        "aps:DescribeWorkspace",
+        "aps:QueryMetrics",
+        "aps:GetLabels",
+        "aps:GetSeries",
+        "aps:GetMetricMetadata",
+      ]
+      resources = ["*"]
+    }
+  }
+
+  # SNS Notification
+  dynamic "statement" {
+    for_each = contains(var.notification_destinations, "SNS") ? [1] : []
+
+    content {
+      actions = [
+        "sns:Publish",
+      ]
+      resources = ["arn:${data.aws_partition.current.partition}:sns:*:${data.aws_caller_identity.current.account_id}:grafana*"]
+    }
+  }
+}
+
+resource "aws_iam_policy" "this" {
+  count = local.create_account_policy && local.create_custom_policy ? 1 : 0
+
+  name_prefix = "${local.iam_role_name}-"
+  description = var.iam_role_description
+  path        = var.iam_role_path
+  policy      = data.aws_iam_policy_document.this[0].json
+
+  tags = var.tags
+}
+
+locals {
+  policies_to_attach = {
+    this = {
+      arn    = try(aws_iam_policy.this[0].arn, null)
+      attach = local.create_custom_policy
+    }
+    sitewise = {
+      arn    = "arn:${data.aws_partition.current.partition}:iam::aws:policy/AWSIoTSiteWiseReadOnlyAccess"
+      attach = contains(var.data_sources, "SITEWISE")
+    }
+    redshift = {
+      arn    = "arn:${data.aws_partition.current.partition}:iam::aws:policy/AmazonGrafanaRedshiftAccess"
+      attach = contains(var.data_sources, "REDSHIFT")
+    }
+    athena = {
+      arn    = "arn:${data.aws_partition.current.partition}:iam::aws:policy/AmazonGrafanaAthenaAccess"
+      attach = contains(var.data_sources, "ATHENA")
+    }
+    timestream = {
+      arn    = "arn:${data.aws_partition.current.partition}:iam::aws:policy/AmazonTimestreamReadOnlyAccess"
+      attach = contains(var.data_sources, "TIMESTREAM")
+    }
+    xray = {
+      arn    = "arn:${data.aws_partition.current.partition}:iam::aws:policy/AWSXrayReadOnlyAccess"
+      attach = contains(var.data_sources, "XRAY")
+    }
+  }
+}
+
+resource "aws_iam_role_policy_attachment" "this" {
+  for_each = { for k, v in local.policies_to_attach : k => v if local.create_account_policy && v.attach }
+
+  role       = aws_iam_role.this[0].name
+  policy_arn = each.value.arn
 }
 
 ################################################################################
