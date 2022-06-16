@@ -34,7 +34,7 @@ locals {
   iam_role_name = coalesce(var.iam_role_name, var.name)
 
   create_account_policy = local.create_role && var.account_access_type == "CURRENT_ACCOUNT"
-  create_custom_policy  = contains(var.data_sources, "CLOUDWATCH") || contains(var.data_sources, "AMAZON_OPENSEARCH_SERVICE") || contains(var.data_sources, "PROMETHEUS") || contains(var.notification_destinations, "SNS")
+  create_custom_policy  = length(setintersection(var.data_sources, ["CLOUDWATCH", "AMAZON_OPENSEARCH_SERVICE", "PROMETHEUS", "SNS"])) > 0
 }
 
 data "aws_iam_policy_document" "assume" {
