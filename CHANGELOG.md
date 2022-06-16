@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.0](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/compare/v1.2.0...v1.3.0) (2022-06-16)
+
+
+### Features
+
+* Add IAM permissions to support workspace role for `CURRENT_ACCOUNT` setting ([#3](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/issues/3)) ([0cfb5e0](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/commit/0cfb5e07cd8f949075f5a0939f581b0fa6993672))
+
 ## [1.2.0](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/compare/v1.1.0...v1.2.0) (2022-06-07)
 
 
