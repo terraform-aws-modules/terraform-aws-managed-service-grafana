@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+### [1.3.1](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/compare/v1.3.0...v1.3.1) (2022-06-27)
+
+
+### Bug Fixes
+
+* Correct policy ARN paths for Redshift and Athena to use service-role ([#6](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/issues/6)) ([1cd2098](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/commit/1cd2098bd93eea9f35b78b98f7dd51fe0791dd33))
+
 ## [1.3.0](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/compare/v1.2.0...v1.3.0) (2022-06-16)
 
 
