@@ -220,11 +220,11 @@ locals {
       attach = contains(var.data_sources, "SITEWISE")
     }
     redshift = {
-      arn    = "arn:${data.aws_partition.current.partition}:iam::aws:policy/AmazonGrafanaRedshiftAccess"
+      arn    = "arn:${data.aws_partition.current.partition}:iam::aws:policy/service-role/AmazonGrafanaRedshiftAccess"
       attach = contains(var.data_sources, "REDSHIFT")
     }
     athena = {
-      arn    = "arn:${data.aws_partition.current.partition}:iam::aws:policy/AmazonGrafanaAthenaAccess"
+      arn    = "arn:${data.aws_partition.current.partition}:iam::aws:policy/service-role/AmazonGrafanaAthenaAccess"
       attach = contains(var.data_sources, "ATHENA")
     }
     timestream = {
