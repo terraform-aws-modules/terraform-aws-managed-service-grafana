@@ -1,12 +1,16 @@
 data "aws_partition" "current" {}
 data "aws_caller_identity" "current" {}
 
+locals {
+  workspace_id = var.create_workspace ? aws_grafana_workspace.this[0].id : var.workspace_id
+}
+
 ################################################################################
 # Workspace
 ################################################################################
 
 resource "aws_grafana_workspace" "this" {
-  count = var.create ? 1 : 0
+  count = var.create && var.create_workspace ? 1 : 0
 
   name        = var.name
   description = var.description
@@ -253,7 +257,7 @@ resource "aws_grafana_workspace_saml_configuration" "this" {
   count = var.create && contains(var.authentication_providers, "SAML") ? 1 : 0
 
   editor_role_values = var.saml_editor_role_values
-  workspace_id       = aws_grafana_workspace.this[0].id
+  workspace_id       = local.workspace_id
 
   idp_metadata_url = var.saml_idp_metadata_url
   idp_metadata_xml = var.saml_idp_metadata_xml
@@ -277,7 +281,7 @@ resource "aws_grafana_license_association" "this" {
   count = var.create && var.associate_license ? 1 : 0
 
   license_type = var.license_type
-  workspace_id = aws_grafana_workspace.this[0].id
+  workspace_id = local.workspace_id
 }
 
 ################################################################################
@@ -290,5 +294,5 @@ resource "aws_grafana_role_association" "this" {
   role         = try(each.value.role, each.key)
   group_ids    = try(each.value.group_ids, null)
   user_ids     = try(each.value.user_ids, null)
-  workspace_id = aws_grafana_workspace.this[0].id
+  workspace_id = local.workspace_id
 }
