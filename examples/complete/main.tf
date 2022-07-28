@@ -18,22 +18,6 @@ locals {
 # Managed Grafana Module
 ################################################################################
 
-module "managed_grafana_disabled" {
-  source = "../.."
-
-  name   = local.name
-  create = false
-}
-
-module "managed_grafana_default" {
-  source = "../.."
-
-  name              = "${local.name}-default"
-  associate_license = false
-
-  tags = local.tags
-}
-
 module "managed_grafana" {
   source = "../.."
 
@@ -83,4 +67,20 @@ module "managed_grafana" {
   # }
 
   tags = local.tags
+}
+
+module "managed_grafana_default" {
+  source = "../.."
+
+  name              = "${local.name}-default"
+  associate_license = false
+
+  tags = local.tags
+}
+
+module "managed_grafana_disabled" {
+  source = "../.."
+
+  name   = local.name
+  create = false
 }

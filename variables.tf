@@ -14,6 +14,18 @@ variable "tags" {
 # Workspace
 ################################################################################
 
+variable "create_workspace" {
+  description = "Determines whether a workspace will be created or to use an existing workspace"
+  type        = bool
+  default     = true
+}
+
+variable "workspace_id" {
+  description = "The ID of an existing workspace to use when `create_workspace` is `false`"
+  type        = string
+  default     = ""
+}
+
 variable "name" {
   description = "The Grafana workspace name"
   type        = string
