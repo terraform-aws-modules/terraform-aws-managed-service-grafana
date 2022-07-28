@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.4.0](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/compare/v1.3.1...v1.4.0) (2022-07-28)
+
+
+### Features
+
+* Add support for using an existing/external workspace ([#8](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/issues/8)) ([eb31531](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/commit/eb31531ab9af3393d601bdd6a7d243d8fa98b703))
+
 ### [1.3.1](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/compare/v1.3.0...v1.3.1) (2022-06-27)
 
 
