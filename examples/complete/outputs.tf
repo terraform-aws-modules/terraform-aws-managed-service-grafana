@@ -18,6 +18,15 @@ output "workspace_grafana_version" {
 }
 
 ################################################################################
+# Workspace API Key
+################################################################################
+
+output "workspace_api_keys" {
+  description = "The workspace API keys created including their attributes"
+  value       = module.managed_grafana.workspace_api_keys
+}
+
+################################################################################
 # Workspace IAM Role
 ################################################################################
 

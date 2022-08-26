@@ -18,6 +18,15 @@ output "workspace_grafana_version" {
 }
 
 ################################################################################
+# Workspace API Key
+################################################################################
+
+output "workspace_api_keys" {
+  description = "The workspace API keys created including their attributes"
+  value       = aws_grafana_workspace_api_key.this
+}
+
+################################################################################
 # Workspace IAM Role
 ################################################################################
 
