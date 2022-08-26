@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.5.0](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/compare/v1.4.0...v1.5.0) (2022-08-26)
+
+
+### Features
+
+* Add support for generating workspace API keys ([#9](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/issues/9)) ([c45bf3b](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/commit/c45bf3b9a3dcaf519f603292fd981c97f595e367))
+
 ## [1.4.0](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/compare/v1.3.1...v1.4.0) (2022-07-28)
 
 
