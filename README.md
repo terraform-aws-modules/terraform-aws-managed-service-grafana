@@ -21,6 +21,25 @@ module "managed_grafana" {
   data_sources              = ["CLOUDWATCH", "PROMETHEUS", "XRAY"]
   notification_destinations = ["SNS"]
 
+  # Workspace API keys
+  workspace_api_keys = {
+    viewer = {
+      key_name        = "viewer"
+      key_role        = "VIEWER"
+      seconds_to_live = 3600
+    }
+    editor = {
+      key_name        = "editor"
+      key_role        = "EDITOR"
+      seconds_to_live = 3600
+    }
+    admin = {
+      key_name        = "admin"
+      key_role        = "ADMIN"
+      seconds_to_live = 3600
+    }
+  }
+
   # Workspace SAML configuration
   saml_admin_role_values  = ["admin"]
   saml_editor_role_values = ["editor"]
@@ -61,13 +80,13 @@ Examples codified under the [`examples`](https://github.com/terraform-aws-module
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13.1 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.12 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.28 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 4.12 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 4.28 |
 
 ## Modules
 
@@ -80,6 +99,7 @@ No modules.
 | [aws_grafana_license_association.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/grafana_license_association) | resource |
 | [aws_grafana_role_association.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/grafana_role_association) | resource |
 | [aws_grafana_workspace.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/grafana_workspace) | resource |
+| [aws_grafana_workspace_api_key.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/grafana_workspace_api_key) | resource |
 | [aws_grafana_workspace_saml_configuration.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/grafana_workspace_saml_configuration) | resource |
 | [aws_iam_policy.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
 | [aws_iam_role.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
@@ -133,6 +153,7 @@ No modules.
 | <a name="input_stack_set_name"></a> [stack\_set\_name](#input\_stack\_set\_name) | The AWS CloudFormation stack set name that provisions IAM roles to be used by the workspace | `string` | `null` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | A map of tags to add to all resources | `map(string)` | `{}` | no |
 | <a name="input_use_iam_role_name_prefix"></a> [use\_iam\_role\_name\_prefix](#input\_use\_iam\_role\_name\_prefix) | Determines whether the IAM role name (`wokspace_iam_role_name`) is used as a prefix | `bool` | `true` | no |
+| <a name="input_workspace_api_keys"></a> [workspace\_api\_keys](#input\_workspace\_api\_keys) | Map of workspace API key definitions to create | `any` | `{}` | no |
 | <a name="input_workspace_id"></a> [workspace\_id](#input\_workspace\_id) | The ID of an existing workspace to use when `create_workspace` is `false` | `string` | `""` | no |
 
 ## Outputs
@@ -142,6 +163,7 @@ No modules.
 | <a name="output_license_expiration"></a> [license\_expiration](#output\_license\_expiration) | If `license_type` is set to `ENTERPRISE`, this is the expiration date of the enterprise license |
 | <a name="output_license_free_trial_expiration"></a> [license\_free\_trial\_expiration](#output\_license\_free\_trial\_expiration) | If `license_type` is set to `ENTERPRISE_FREE_TRIAL`, this is the expiration date of the free trial |
 | <a name="output_saml_configuration_status"></a> [saml\_configuration\_status](#output\_saml\_configuration\_status) | Status of the SAML configuration |
+| <a name="output_workspace_api_keys"></a> [workspace\_api\_keys](#output\_workspace\_api\_keys) | The workspace API keys created including their attributes |
 | <a name="output_workspace_arn"></a> [workspace\_arn](#output\_workspace\_arn) | The Amazon Resource Name (ARN) of the Grafana workspace |
 | <a name="output_workspace_endpoint"></a> [workspace\_endpoint](#output\_workspace\_endpoint) | The endpoint of the Grafana workspace |
 | <a name="output_workspace_grafana_version"></a> [workspace\_grafana\_version](#output\_workspace\_grafana\_version) | The version of Grafana running on the workspace |

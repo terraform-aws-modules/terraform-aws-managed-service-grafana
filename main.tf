@@ -2,7 +2,7 @@ data "aws_partition" "current" {}
 data "aws_caller_identity" "current" {}
 
 locals {
-  workspace_id = var.create_workspace ? aws_grafana_workspace.this[0].id : var.workspace_id
+  workspace_id = var.create_workspace ? try(aws_grafana_workspace.this[0].id, null) : var.workspace_id
 }
 
 ################################################################################
@@ -27,6 +27,19 @@ resource "aws_grafana_workspace" "this" {
   stack_set_name            = coalesce(var.stack_set_name, var.name)
 
   tags = var.tags
+}
+
+################################################################################
+# Workspace API Key
+################################################################################
+
+resource "aws_grafana_workspace_api_key" "this" {
+  for_each = { for k, v in var.workspace_api_keys : k => v if var.create }
+
+  key_name        = try(each.value.key_name, each.key)
+  key_role        = each.value.key_role
+  seconds_to_live = each.value.seconds_to_live
+  workspace_id    = local.workspace_id
 }
 
 ################################################################################

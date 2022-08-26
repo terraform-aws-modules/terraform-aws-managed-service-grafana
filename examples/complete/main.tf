@@ -32,6 +32,25 @@ module "managed_grafana" {
   notification_destinations = ["SNS"]
   stack_set_name            = local.name
 
+  # Workspace API keys
+  workspace_api_keys = {
+    viewer = {
+      key_name        = "viewer"
+      key_role        = "VIEWER"
+      seconds_to_live = 3600
+    }
+    editor = {
+      key_name        = "editor"
+      key_role        = "EDITOR"
+      seconds_to_live = 3600
+    }
+    admin = {
+      key_name        = "admin"
+      key_role        = "ADMIN"
+      seconds_to_live = 3600
+    }
+  }
+
   # Workspace IAM role
   create_iam_role                = true
   iam_role_name                  = local.name
