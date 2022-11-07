@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+### [1.5.1](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/compare/v1.5.0...v1.5.1) (2022-11-07)
+
+
+### Bug Fixes
+
+* Update CI configuration files to use latest version ([#12](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/issues/12)) ([8027f54](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/commit/8027f549a69ac565bd13a0ed10e22844945eb68e))
+
 ## [1.5.0](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/compare/v1.4.0...v1.5.0) (2022-08-26)
 
 
