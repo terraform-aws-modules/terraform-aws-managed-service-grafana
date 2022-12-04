@@ -7,6 +7,11 @@ output "workspace_arn" {
   value       = try(aws_grafana_workspace.this[0].arn, null)
 }
 
+output "workspace_id" {
+  description = "The ID of the Grafana workspace"
+  value       = try(aws_grafana_workspace.this[0].id, null)
+}
+
 output "workspace_endpoint" {
   description = "The endpoint of the Grafana workspace"
   value       = try(aws_grafana_workspace.this[0].endpoint, null)
