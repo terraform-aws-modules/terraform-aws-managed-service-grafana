@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.6.0](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/compare/v1.5.1...v1.6.0) (2022-12-04)
+
+
+### Features
+
+* Add workspace ID as output attribute ([#11](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/issues/11)) ([d2e19e9](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/commit/d2e19e94eb72c6877372e75b1a8fd79fdc19a152))
+
 ### [1.5.1](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/compare/v1.5.0...v1.5.1) (2022-11-07)
 
 
