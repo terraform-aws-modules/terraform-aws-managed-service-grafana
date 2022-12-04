@@ -8,7 +8,7 @@ output "workspace_arn" {
 }
 
 output "workspace_id" {
-  description = "The ID of this Grafana workspace"
+  description = "The ID of the Grafana workspace"
   value       = try(aws_grafana_workspace.this[0].id, null)
 }
 

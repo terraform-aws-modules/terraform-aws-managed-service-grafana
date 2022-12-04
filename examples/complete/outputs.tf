@@ -7,6 +7,11 @@ output "workspace_arn" {
   value       = module.managed_grafana.workspace_arn
 }
 
+output "workspace_id" {
+  description = "The ID of the Grafana workspace"
+  value       = module.managed_grafana.workspace_id
+}
+
 output "workspace_endpoint" {
   description = "The endpoint of the Grafana workspace"
   value       = module.managed_grafana.workspace_endpoint
