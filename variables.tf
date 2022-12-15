@@ -249,7 +249,7 @@ variable "saml_role_assertion" {
 variable "associate_license" {
   description = "Determines whether a license will be associated with the workspace. Use false if you do not have an active enterprise license in the AWS Marketplace."
   type        = bool
-  default     = true
+  default     = false
 }
 
 variable "license_type" {
