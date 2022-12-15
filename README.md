@@ -132,7 +132,7 @@ No modules.
 | <a name="input_iam_role_policy_arns"></a> [iam\_role\_policy\_arns](#input\_iam\_role\_policy\_arns) | List of ARNs of IAM policies to attach to the workspace IAM role | `list(string)` | `[]` | no |
 | <a name="input_iam_role_tags"></a> [iam\_role\_tags](#input\_iam\_role\_tags) | A map of additional tags to add to the IAM role created | `map(string)` | `{}` | no |
 | <a name="input_license_type"></a> [license\_type](#input\_license\_type) | The type of license for the workspace license association. Valid values are `ENTERPRISE` and `ENTERPRISE_FREE_TRIAL` | `string` | `"ENTERPRISE"` | no |
-| <a name="input_name"></a> [name](#input\_name) | The Grafana workspace name | `string` | `null` | no |
+| <a name="input_name"></a> [name](#input\_name) | The Grafana workspace name. Required if stack_set_name is not provided. Valid special characters include "-", ".", "_", “~”. Cannot contain non-ASCII characters or spaces. Max length of 255 characters. | `string` | `null` | no |
 | <a name="input_notification_destinations"></a> [notification\_destinations](#input\_notification\_destinations) | The notification destinations. If a data source is specified here, Amazon Managed Grafana will create IAM roles and permissions needed to use these destinations. Must be set to `SNS` | `list(string)` | `[]` | no |
 | <a name="input_organization_role_name"></a> [organization\_role\_name](#input\_organization\_role\_name) | The role name that the workspace uses to access resources through Amazon Organizations | `string` | `null` | no |
 | <a name="input_organizational_units"></a> [organizational\_units](#input\_organizational\_units) | The Amazon Organizations organizational units that the workspace is authorized to use data sources from | `list(string)` | `[]` | no |
@@ -150,7 +150,7 @@ No modules.
 | <a name="input_saml_name_assertion"></a> [saml\_name\_assertion](#input\_saml\_name\_assertion) | SAML authentication name assertion | `string` | `null` | no |
 | <a name="input_saml_org_assertion"></a> [saml\_org\_assertion](#input\_saml\_org\_assertion) | SAML authentication org assertion | `string` | `null` | no |
 | <a name="input_saml_role_assertion"></a> [saml\_role\_assertion](#input\_saml\_role\_assertion) | SAML authentication role assertion | `string` | `null` | no |
-| <a name="input_stack_set_name"></a> [stack\_set\_name](#input\_stack\_set\_name) | The AWS CloudFormation stack set name that provisions IAM roles to be used by the workspace | `string` | `null` | no |
+| <a name="input_stack_set_name"></a> [stack\_set\_name](#input\_stack\_set\_name) | The AWS CloudFormation stack set name that provisions IAM roles to be used by the workspace. Required if name is not provided. Valid special characters include "-", ".", "_", “~”. Cannot contain non-ASCII characters or spaces. Max length of 255 characters. | `string` | `null` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | A map of tags to add to all resources | `map(string)` | `{}` | no |
 | <a name="input_use_iam_role_name_prefix"></a> [use\_iam\_role\_name\_prefix](#input\_use\_iam\_role\_name\_prefix) | Determines whether the IAM role name (`wokspace_iam_role_name`) is used as a prefix | `bool` | `true` | no |
 | <a name="input_workspace_api_keys"></a> [workspace\_api\_keys](#input\_workspace\_api\_keys) | Map of workspace API key definitions to create | `any` | `{}` | no |

@@ -27,7 +27,7 @@ variable "workspace_id" {
 }
 
 variable "name" {
-  description = "The Grafana workspace name"
+  description = "The Grafana workspace name. Required if stack_set_name is not provided. Valid special characters include "-", ".", "_", “~”. Cannot contain non-ASCII characters or spaces. Max length of 255 characters."
   type        = string
   default     = null
 }
@@ -81,7 +81,7 @@ variable "organizational_units" {
 }
 
 variable "stack_set_name" {
-  description = "The AWS CloudFormation stack set name that provisions IAM roles to be used by the workspace"
+  description = "The AWS CloudFormation stack set name that provisions IAM roles to be used by the workspace. Required if name is not provided. Valid special characters include "-", ".", "_", “~”. Cannot contain non-ASCII characters or spaces. Max length of 255 characters."
   type        = string
   default     = null
 }
