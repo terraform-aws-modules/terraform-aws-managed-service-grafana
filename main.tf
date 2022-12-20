@@ -28,10 +28,10 @@ resource "aws_grafana_workspace" "this" {
   stack_set_name            = coalesce(var.stack_set_name, var.name)
 
   dynamic "vpc_configuration" {
-    for_each = { for k, v in var.vpc_configuration : k => v if var.vpc_configuration != {} }
+    for_each = local.vpc_workspace ? [1] : []
     content {
-      security_group_ids = each.value.security_group_ids
-      subnet_ids         = each.value.subnet_ids
+      security_group_ids = var.vpc_configuration.security_group_ids
+      subnet_ids         = var.vpc_configuration.subnet_ids
     }
   }
 

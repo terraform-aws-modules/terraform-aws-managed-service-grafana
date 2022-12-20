@@ -32,6 +32,12 @@ module "managed_grafana" {
   notification_destinations = ["SNS"]
   stack_set_name            = local.name
 
+  # vpc configuration
+  vpc_configuration = {
+    security_group_ids = ["sg-0000000aaa0000001", "sg-0000000bbb0000002"]
+    subnet_ids         = ["subnet-0000000000", "subnet-1111111111", "subnet-22222222222"]
+  }
+
   # Workspace API keys
   workspace_api_keys = {
     viewer = {
