@@ -80,13 +80,13 @@ Examples codified under the [`examples`](https://github.com/terraform-aws-module
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13.1 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.28 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.47 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 4.28 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 4.47 |
 
 ## Modules
 
@@ -153,6 +153,7 @@ No modules.
 | <a name="input_stack_set_name"></a> [stack\_set\_name](#input\_stack\_set\_name) | The AWS CloudFormation stack set name that provisions IAM roles to be used by the workspace | `string` | `null` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | A map of tags to add to all resources | `map(string)` | `{}` | no |
 | <a name="input_use_iam_role_name_prefix"></a> [use\_iam\_role\_name\_prefix](#input\_use\_iam\_role\_name\_prefix) | Determines whether the IAM role name (`wokspace_iam_role_name`) is used as a prefix | `bool` | `true` | no |
+| <a name="vpc_configuration"></a> [vpc\_configuration](#vpc\_configuration) | Map of vpc configuration settings for creating grafana workspace within an AWS VPC | `map` | `{}` | no |
 | <a name="input_workspace_api_keys"></a> [workspace\_api\_keys](#input\_workspace\_api\_keys) | Map of workspace API key definitions to create | `any` | `{}` | no |
 | <a name="input_workspace_id"></a> [workspace\_id](#input\_workspace\_id) | The ID of an existing workspace to use when `create_workspace` is `false` | `string` | `""` | no |
 

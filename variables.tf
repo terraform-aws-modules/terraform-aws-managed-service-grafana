@@ -267,3 +267,13 @@ variable "role_associations" {
   type        = any
   default     = {}
 }
+
+################################################################################
+# VPC Configuration
+################################################################################
+
+variable "vpc_configuration" {
+  description = "Map of vpc configuration settings"
+  type        = any
+  default     = {}
+}
