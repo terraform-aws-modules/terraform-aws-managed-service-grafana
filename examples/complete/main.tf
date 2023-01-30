@@ -32,6 +32,12 @@ module "managed_grafana" {
   notification_destinations = ["SNS"]
   stack_set_name            = local.name
 
+  configuration = jsonencode({
+    unifiedAlerting = {
+      enabled = true
+    }
+  })
+
   # Workspace API keys
   workspace_api_keys = {
     viewer = {
