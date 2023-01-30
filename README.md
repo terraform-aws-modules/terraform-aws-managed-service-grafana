@@ -80,13 +80,13 @@ Examples codified under the [`examples`](https://github.com/terraform-aws-module
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13.1 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.28 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.51 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 4.28 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 4.51 |
 
 ## Modules
 
@@ -117,6 +117,7 @@ No modules.
 | <a name="input_account_access_type"></a> [account\_access\_type](#input\_account\_access\_type) | The type of account access for the workspace. Valid values are `CURRENT_ACCOUNT` and `ORGANIZATION` | `string` | `"CURRENT_ACCOUNT"` | no |
 | <a name="input_associate_license"></a> [associate\_license](#input\_associate\_license) | Determines whether a license will be associated with the workspace | `bool` | `true` | no |
 | <a name="input_authentication_providers"></a> [authentication\_providers](#input\_authentication\_providers) | The authentication providers for the workspace. Valid values are `AWS_SSO`, `SAML`, or both | `list(string)` | <pre>[<br>  "AWS_SSO"<br>]</pre> | no |
+| <a name="input_configuration"></a> [configuration](#input\_configuration) | The configuration string for the workspace | `string` | `null` | no |
 | <a name="input_create"></a> [create](#input\_create) | Determines whether a resources will be created | `bool` | `true` | no |
 | <a name="input_create_iam_role"></a> [create\_iam\_role](#input\_create\_iam\_role) | Determines whether a an IAM role is created or to use an existing IAM role | `bool` | `true` | no |
 | <a name="input_create_workspace"></a> [create\_workspace](#input\_create\_workspace) | Determines whether a workspace will be created or to use an existing workspace | `bool` | `true` | no |
