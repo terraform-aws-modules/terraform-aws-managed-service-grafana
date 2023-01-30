@@ -86,6 +86,12 @@ variable "stack_set_name" {
   default     = null
 }
 
+variable "vpc_configuration" {
+  description = "The configuration settings for an Amazon VPC that contains data sources for your Grafana workspace to connect to"
+  type        = any
+  default     = {}
+}
+
 ################################################################################
 # Workspace API Key
 ################################################################################
@@ -269,11 +275,41 @@ variable "role_associations" {
 }
 
 ################################################################################
-# VPC Configuration
+# Security Group
 ################################################################################
 
-variable "vpc_configuration" {
-  description = "Map of vpc configuration settings"
+variable "create_security_group" {
+  description = "Determines if a security group is created"
+  type        = bool
+  default     = true
+}
+
+variable "security_group_name" {
+  description = "Name to use on security group created"
+  type        = string
+  default     = null
+}
+
+variable "security_group_use_name_prefix" {
+  description = "Determines whether the security group name (`security_group_name`) is used as a prefix"
+  type        = bool
+  default     = true
+}
+
+variable "security_group_description" {
+  description = "Description of the security group created"
+  type        = string
+  default     = null
+}
+
+variable "security_group_rules" {
+  description = "Security group rules to add to the security group created"
   type        = any
+  default     = {}
+}
+
+variable "security_group_tags" {
+  description = "A map of additional tags to add to the security group created"
+  type        = map(string)
   default     = {}
 }
