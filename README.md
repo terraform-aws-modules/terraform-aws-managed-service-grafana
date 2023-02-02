@@ -120,6 +120,7 @@ No modules.
 | <a name="input_account_access_type"></a> [account\_access\_type](#input\_account\_access\_type) | The type of account access for the workspace. Valid values are `CURRENT_ACCOUNT` and `ORGANIZATION` | `string` | `"CURRENT_ACCOUNT"` | no |
 | <a name="input_associate_license"></a> [associate\_license](#input\_associate\_license) | Determines whether a license will be associated with the workspace | `bool` | `true` | no |
 | <a name="input_authentication_providers"></a> [authentication\_providers](#input\_authentication\_providers) | The authentication providers for the workspace. Valid values are `AWS_SSO`, `SAML`, or both | `list(string)` | <pre>[<br>  "AWS_SSO"<br>]</pre> | no |
+| <a name="input_configuration"></a> [configuration](#input\_configuration) | The configuration string for the workspace | `string` | `null` | no |
 | <a name="input_create"></a> [create](#input\_create) | Determines whether a resources will be created | `bool` | `true` | no |
 | <a name="input_create_iam_role"></a> [create\_iam\_role](#input\_create\_iam\_role) | Determines whether a an IAM role is created or to use an existing IAM role | `bool` | `true` | no |
 | <a name="input_create_security_group"></a> [create\_security\_group](#input\_create\_security\_group) | Determines if a security group is created | `bool` | `true` | no |

@@ -56,6 +56,12 @@ variable "permission_type" {
   default     = "SERVICE_MANAGED"
 }
 
+variable "configuration" {
+  description = "The configuration string for the workspace"
+  type        = string
+  default     = null
+}
+
 variable "data_sources" {
   description = "The data sources for the workspace. Valid values are `AMAZON_OPENSEARCH_SERVICE`, `ATHENA`, `CLOUDWATCH`, `PROMETHEUS`, `REDSHIFT`, `SITEWISE`, `TIMESTREAM`, `XRAY`"
   type        = list(string)

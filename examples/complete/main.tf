@@ -37,6 +37,12 @@ module "managed_grafana" {
   notification_destinations = ["SNS"]
   stack_set_name            = local.name
 
+  configuration = jsonencode({
+    unifiedAlerting = {
+      enabled = true
+    }
+  })
+
   # vpc configuration
   vpc_configuration = {
     subnet_ids = module.vpc.private_subnets
