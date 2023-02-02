@@ -2,15 +2,20 @@ provider "aws" {
   region = local.region
 }
 
+data "aws_availability_zones" "available" {}
+
 locals {
   region      = "us-east-1"
   name        = "amg-ex-${replace(basename(path.cwd), "_", "-")}"
   description = "AWS Managed Grafana service for ${local.name}"
 
+  vpc_cidr = "10.0.0.0/16"
+  azs      = slice(data.aws_availability_zones.available.names, 0, 3)
+
   tags = {
-    Name       = local.name
     Example    = local.name
-    Repository = "https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana"
+    GithubRepo = "terraform-aws-manage-service-grafana"
+    GithubOrg  = "terraform-aws-modules"
   }
 }
 
@@ -37,6 +42,20 @@ module "managed_grafana" {
       enabled = true
     }
   })
+
+  # vpc configuration
+  vpc_configuration = {
+    subnet_ids = module.vpc.private_subnets
+  }
+  security_group_rules = {
+    egress_postgresql = {
+      description = "Allow egress to PostgreSQL"
+      from_port   = 5432
+      to_port     = 5432
+      protocol    = "tcp"
+      cidr_blocks = module.vpc.private_subnets_cidr_blocks
+    }
+  }
 
   # Workspace API keys
   workspace_api_keys = {
@@ -108,4 +127,27 @@ module "managed_grafana_disabled" {
 
   name   = local.name
   create = false
+}
+
+################################################################################
+# Supporting Resources
+################################################################################
+
+module "vpc" {
+  source  = "terraform-aws-modules/vpc/aws"
+  version = "~> 3.0"
+
+  name = local.name
+  cidr = local.vpc_cidr
+
+  azs             = local.azs
+  private_subnets = [for k, v in local.azs : cidrsubnet(local.vpc_cidr, 4, k)]
+  public_subnets  = [for k, v in local.azs : cidrsubnet(local.vpc_cidr, 8, k + 48)]
+
+  enable_nat_gateway      = false # disabling for example, re-evaluate for your environment
+  single_nat_gateway      = true
+  enable_dns_hostnames    = true
+  map_public_ip_on_launch = false
+
+  tags = local.tags
 }
