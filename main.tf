@@ -30,7 +30,7 @@ resource "aws_grafana_workspace" "this" {
     for_each = length(var.vpc_configuration) > 0 ? [var.vpc_configuration] : []
 
     content {
-      security_group_ids = var.create_security_group ? concat([aws_security_group.this[0].id], vpc_configuration.value.security_group_ids) : vpc_configuration.value.security_group_ids
+      security_group_ids = var.create_security_group ? flatten(concat([aws_security_group.this[0].id], try(vpc_configuration.value.security_group_ids, []))) : vpc_configuration.value.security_group_ids
       subnet_ids         = vpc_configuration.value.subnet_ids
     }
   }
@@ -76,7 +76,7 @@ resource "aws_security_group_rule" "this" {
   protocol          = each.value.protocol
   from_port         = each.value.from_port
   to_port           = each.value.to_port
-  type              = each.value.type
+  type              = try(each.value.type, "egress")
 
   # Optional
   description              = lookup(each.value, "description", null)
