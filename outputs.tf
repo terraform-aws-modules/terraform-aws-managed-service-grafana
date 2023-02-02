@@ -72,3 +72,17 @@ output "license_expiration" {
   description = "If `license_type` is set to `ENTERPRISE`, this is the expiration date of the enterprise license"
   value       = try(aws_grafana_license_association.this[0].license_expiration, null)
 }
+
+################################################################################
+# Security Group
+################################################################################
+
+output "security_group_arn" {
+  description = "Amazon Resource Name (ARN) of the security group"
+  value       = try(aws_security_group.this[0].arn, null)
+}
+
+output "security_group_id" {
+  description = "ID of the security group"
+  value       = try(aws_security_group.this[0].id, null)
+}
