@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.8.0](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/compare/v1.7.0...v1.8.0) (2023-02-02)
+
+
+### Features
+
+* Add workpace `configuration` argument ([#17](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/issues/17)) ([85ada19](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/commit/85ada198438acd218ee1e10850f2ff820de73be3))
+
 ## [1.7.0](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/compare/v1.6.0...v1.7.0) (2023-02-02)
 
 
