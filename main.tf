@@ -326,7 +326,7 @@ resource "aws_iam_role_policy_attachment" "this" {
 ################################################################################
 
 resource "aws_grafana_workspace_saml_configuration" "this" {
-  count = var.create && contains(var.authentication_providers, "SAML") ? 1 : 0
+  count = var.create && var.saml_create && contains(var.authentication_providers, "SAML") ? 1 : 0
 
   editor_role_values = var.saml_editor_role_values
   workspace_id       = local.workspace_id

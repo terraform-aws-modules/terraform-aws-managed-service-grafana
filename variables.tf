@@ -182,6 +182,12 @@ variable "iam_role_tags" {
 # Workspace SAML Configuration
 ################################################################################
 
+variable "saml_create" {
+  description = "Determines whether the SAML configuration will be created"
+  type        = bool
+  default     = true
+}
+
 variable "saml_editor_role_values" {
   description = "SAML authentication editor role values"
   type        = list(string)
