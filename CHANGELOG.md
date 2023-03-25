@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.9.0](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/compare/v1.8.0...v1.9.0) (2023-03-25)
+
+
+### Features
+
+* Control creation of SAML configuration via `create_saml_configuration` ([#20](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/issues/20)) ([eb37802](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/commit/eb3780220dc426166522197d7a35437ed4503990))
+
 ## [1.8.0](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/compare/v1.7.0...v1.8.0) (2023-02-02)
 
 
