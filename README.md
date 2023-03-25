@@ -123,6 +123,7 @@ No modules.
 | <a name="input_configuration"></a> [configuration](#input\_configuration) | The configuration string for the workspace | `string` | `null` | no |
 | <a name="input_create"></a> [create](#input\_create) | Determines whether a resources will be created | `bool` | `true` | no |
 | <a name="input_create_iam_role"></a> [create\_iam\_role](#input\_create\_iam\_role) | Determines whether a an IAM role is created or to use an existing IAM role | `bool` | `true` | no |
+| <a name="input_create_saml_configuration"></a> [create\_saml\_configuration](#input\_create\_saml\_configuration) | Determines whether the SAML configuration will be created | `bool` | `true` | no |
 | <a name="input_create_security_group"></a> [create\_security\_group](#input\_create\_security\_group) | Determines if a security group is created | `bool` | `true` | no |
 | <a name="input_create_workspace"></a> [create\_workspace](#input\_create\_workspace) | Determines whether a workspace will be created or to use an existing workspace | `bool` | `true` | no |
 | <a name="input_data_sources"></a> [data\_sources](#input\_data\_sources) | The data sources for the workspace. Valid values are `AMAZON_OPENSEARCH_SERVICE`, `ATHENA`, `CLOUDWATCH`, `PROMETHEUS`, `REDSHIFT`, `SITEWISE`, `TIMESTREAM`, `XRAY` | `list(string)` | `[]` | no |
