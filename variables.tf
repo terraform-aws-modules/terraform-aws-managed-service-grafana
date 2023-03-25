@@ -182,7 +182,7 @@ variable "iam_role_tags" {
 # Workspace SAML Configuration
 ################################################################################
 
-variable "create_saml" {
+variable "create_saml_configuration" {
   description = "Determines whether the SAML configuration will be created"
   type        = bool
   default     = true
