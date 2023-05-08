@@ -56,6 +56,12 @@ variable "permission_type" {
   default     = "SERVICE_MANAGED"
 }
 
+variable "grafana_version" {
+  description = "Specifies the version of Grafana to support in the new workspace. If not specified, the default version for the `aws_grafana_workspace` resource will be used. See `aws_grafana_workspace` documentation for available options."
+  type        = string
+  default     = null
+}
+
 variable "configuration" {
   description = "The configuration string for the workspace"
   type        = string

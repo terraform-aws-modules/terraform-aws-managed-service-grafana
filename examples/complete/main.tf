@@ -36,12 +36,14 @@ module "managed_grafana" {
   data_sources              = ["CLOUDWATCH", "PROMETHEUS", "XRAY"]
   notification_destinations = ["SNS"]
   stack_set_name            = local.name
+  grafana_version           = "9.4"
 
   configuration = jsonencode({
     unifiedAlerting = {
       enabled = true
     }
   })
+
 
   # vpc configuration
   vpc_configuration = {
