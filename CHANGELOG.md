@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.10.0](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/compare/v1.9.0...v1.10.0) (2023-05-09)
+
+
+### Features
+
+* Add support for Grafana version specification ([#21](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/issues/21)) ([421b2b6](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/commit/421b2b698a965ea4c983da7ccc8e716f76abb009))
+
 ## [1.9.0](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/compare/v1.8.0...v1.9.0) (2023-03-25)
 
 
