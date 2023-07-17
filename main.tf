@@ -30,7 +30,7 @@ resource "aws_grafana_workspace" "this" {
 
   network_access_control {
     prefix_list_ids=var.network_access_control_prefix_list_ids
-    vpce_ids=var.network_access_control_vpce_ids
+    vpce_ids=var.network_access_control_vpc_ids
   }
 
   dynamic "vpc_configuration" {

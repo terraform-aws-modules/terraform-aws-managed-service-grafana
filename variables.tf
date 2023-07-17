@@ -339,11 +339,11 @@ variable "security_group_tags" {
 variable "network_access_control_prefix_list_ids" {
   description = "Configuration for network access to your workspace (https://registry.terraform.io/providers/hashicorp/aws/5.8.0/docs/resources/grafana_workspace#network_access_control)."
   type        = list(string)
-  default = [""] # https://github.com/hashicorp/terraform-provider-aws/issues/30062
+  default = []
 }
 
-variable "network_access_control_vpce_ids" {
+variable "network_access_control_vpc_ids" {
   description = "Configuration for network access to your workspace (https://registry.terraform.io/providers/hashicorp/aws/5.8.0/docs/resources/grafana_workspace#network_access_control)."
   type        = list(string)
-  default = [""] # https://github.com/hashicorp/terraform-provider-aws/issues/30062
+  default = []
 }
