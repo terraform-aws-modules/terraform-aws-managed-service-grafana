@@ -28,6 +28,11 @@ resource "aws_grafana_workspace" "this" {
   role_arn                  = var.create_iam_role ? aws_iam_role.this[0].arn : var.iam_role_arn
   stack_set_name            = coalesce(var.stack_set_name, var.name)
 
+  network_access_control {
+    prefix_list_ids=var.network_access_control_prefix_list_ids
+    vpce_ids=var.network_access_control_vpce_ids
+  }
+
   dynamic "vpc_configuration" {
     for_each = length(var.vpc_configuration) > 0 ? [var.vpc_configuration] : []
 

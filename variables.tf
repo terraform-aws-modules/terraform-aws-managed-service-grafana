@@ -331,3 +331,19 @@ variable "security_group_tags" {
   type        = map(string)
   default     = {}
 }
+
+################################################################################
+# Network access control
+################################################################################
+
+variable "network_access_control_prefix_list_ids" {
+  description = "Configuration for network access to your workspace (https://registry.terraform.io/providers/hashicorp/aws/5.8.0/docs/resources/grafana_workspace#network_access_control)."
+  type        = list(string)
+  default = [""] # https://github.com/hashicorp/terraform-provider-aws/issues/30062
+}
+
+variable "network_access_control_vpce_ids" {
+  description = "Configuration for network access to your workspace (https://registry.terraform.io/providers/hashicorp/aws/5.8.0/docs/resources/grafana_workspace#network_access_control)."
+  type        = list(string)
+  default = [""] # https://github.com/hashicorp/terraform-provider-aws/issues/30062
+}
