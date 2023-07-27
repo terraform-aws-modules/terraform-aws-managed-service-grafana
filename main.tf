@@ -12,19 +12,27 @@ locals {
 resource "aws_grafana_workspace" "this" {
   count = var.create && var.create_workspace ? 1 : 0
 
-  name        = var.name
-  description = var.description
-
   account_access_type      = var.account_access_type
   authentication_providers = var.authentication_providers
-  permission_type          = var.permission_type
+  configuration            = var.configuration
+  data_sources             = var.data_sources
+  description              = var.description
+  grafana_version          = var.grafana_version
+  name                     = var.name
 
-  grafana_version           = var.grafana_version
-  configuration             = var.configuration
-  data_sources              = var.data_sources
+  dynamic "network_access_control" {
+    for_each = length(var.network_access_control) > 0 ? [var.network_access_control] : []
+
+    content {
+      prefix_list_ids = network_access_control.value.prefix_list_ids
+      vpce_ids        = network_access_control.value.vpce_ids
+    }
+  }
+
   notification_destinations = var.notification_destinations
   organization_role_name    = var.organization_role_name
   organizational_units      = var.organizational_units
+  permission_type           = var.permission_type
   role_arn                  = var.create_iam_role ? aws_iam_role.this[0].arn : var.iam_role_arn
   stack_set_name            = coalesce(var.stack_set_name, var.name)
 
@@ -329,21 +337,19 @@ resource "aws_iam_role_policy_attachment" "this" {
 resource "aws_grafana_workspace_saml_configuration" "this" {
   count = var.create && var.create_saml_configuration && contains(var.authentication_providers, "SAML") ? 1 : 0
 
-  editor_role_values = var.saml_editor_role_values
-  workspace_id       = local.workspace_id
-
-  idp_metadata_url = var.saml_idp_metadata_url
-  idp_metadata_xml = var.saml_idp_metadata_xml
-
   admin_role_values       = var.saml_admin_role_values
   allowed_organizations   = var.saml_allowed_organizations
+  editor_role_values      = var.saml_editor_role_values
   email_assertion         = var.saml_email_assertion
   groups_assertion        = var.saml_groups_assertion
+  idp_metadata_url        = var.saml_idp_metadata_url
+  idp_metadata_xml        = var.saml_idp_metadata_xml
   login_assertion         = var.saml_login_assertion
   login_validity_duration = var.saml_login_validity_duration
   name_assertion          = var.saml_name_assertion
   org_assertion           = var.saml_org_assertion
   role_assertion          = var.saml_role_assertion
+  workspace_id            = local.workspace_id
 }
 
 ################################################################################
@@ -364,8 +370,8 @@ resource "aws_grafana_license_association" "this" {
 resource "aws_grafana_role_association" "this" {
   for_each = { for k, v in var.role_associations : k => v if var.create }
 
-  role         = try(each.value.role, each.key)
   group_ids    = try(each.value.group_ids, null)
+  role         = try(each.value.role, each.key)
   user_ids     = try(each.value.user_ids, null)
   workspace_id = local.workspace_id
 }

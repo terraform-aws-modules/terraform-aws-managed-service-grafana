@@ -23,14 +23,14 @@ Note that this example may create resources which will incur monetary charges on
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13.1 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4.51 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 5.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 4.51 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 5.0 |
 
 ## Modules
 
@@ -39,7 +39,7 @@ Note that this example may create resources which will incur monetary charges on
 | <a name="module_managed_grafana"></a> [managed\_grafana](#module\_managed\_grafana) | ../.. | n/a |
 | <a name="module_managed_grafana_default"></a> [managed\_grafana\_default](#module\_managed\_grafana\_default) | ../.. | n/a |
 | <a name="module_managed_grafana_disabled"></a> [managed\_grafana\_disabled](#module\_managed\_grafana\_disabled) | ../.. | n/a |
-| <a name="module_vpc"></a> [vpc](#module\_vpc) | terraform-aws-modules/vpc/aws | ~> 3.0 |
+| <a name="module_vpc"></a> [vpc](#module\_vpc) | terraform-aws-modules/vpc/aws | ~> 5.0 |
 
 ## Resources
 

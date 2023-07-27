@@ -26,18 +26,6 @@ variable "workspace_id" {
   default     = ""
 }
 
-variable "name" {
-  description = "The Grafana workspace name"
-  type        = string
-  default     = null
-}
-
-variable "description" {
-  description = "The workspace description"
-  type        = string
-  default     = null
-}
-
 variable "account_access_type" {
   description = "The type of account access for the workspace. Valid values are `CURRENT_ACCOUNT` and `ORGANIZATION`"
   type        = string
@@ -50,18 +38,6 @@ variable "authentication_providers" {
   default     = ["AWS_SSO"]
 }
 
-variable "permission_type" {
-  description = "The permission type of the workspace. If `SERVICE_MANAGED` is specified, the IAM roles and IAM policy attachments are generated automatically. If `CUSTOMER_MANAGED` is specified, the IAM roles and IAM policy attachments will not be created"
-  type        = string
-  default     = "SERVICE_MANAGED"
-}
-
-variable "grafana_version" {
-  description = "Specifies the version of Grafana to support in the new workspace. If not specified, the default version for the `aws_grafana_workspace` resource will be used. See `aws_grafana_workspace` documentation for available options."
-  type        = string
-  default     = null
-}
-
 variable "configuration" {
   description = "The configuration string for the workspace"
   type        = string
@@ -72,6 +48,30 @@ variable "data_sources" {
   description = "The data sources for the workspace. Valid values are `AMAZON_OPENSEARCH_SERVICE`, `ATHENA`, `CLOUDWATCH`, `PROMETHEUS`, `REDSHIFT`, `SITEWISE`, `TIMESTREAM`, `XRAY`"
   type        = list(string)
   default     = []
+}
+
+variable "description" {
+  description = "The workspace description"
+  type        = string
+  default     = null
+}
+
+variable "grafana_version" {
+  description = "Specifies the version of Grafana to support in the new workspace. If not specified, the default version for the `aws_grafana_workspace` resource will be used. See `aws_grafana_workspace` documentation for available options."
+  type        = string
+  default     = null
+}
+
+variable "name" {
+  description = "The Grafana workspace name"
+  type        = string
+  default     = null
+}
+
+variable "network_access_control" {
+  description = "Configuration for network access to your workspace"
+  type        = any
+  default     = {}
 }
 
 variable "notification_destinations" {
@@ -92,6 +92,12 @@ variable "organizational_units" {
   default     = []
 }
 
+variable "permission_type" {
+  description = "The permission type of the workspace. If `SERVICE_MANAGED` is specified, the IAM roles and IAM policy attachments are generated automatically. If `CUSTOMER_MANAGED` is specified, the IAM roles and IAM policy attachments will not be created"
+  type        = string
+  default     = "SERVICE_MANAGED"
+}
+
 variable "stack_set_name" {
   description = "The AWS CloudFormation stack set name that provisions IAM roles to be used by the workspace"
   type        = string
@@ -100,16 +106,6 @@ variable "stack_set_name" {
 
 variable "vpc_configuration" {
   description = "The configuration settings for an Amazon VPC that contains data sources for your Grafana workspace to connect to"
-  type        = any
-  default     = {}
-}
-
-################################################################################
-# Workspace API Key
-################################################################################
-
-variable "workspace_api_keys" {
-  description = "Map of workspace API key definitions to create"
   type        = any
   default     = {}
 }
@@ -185,6 +181,16 @@ variable "iam_role_tags" {
 }
 
 ################################################################################
+# Workspace API Key
+################################################################################
+
+variable "workspace_api_keys" {
+  description = "Map of workspace API key definitions to create"
+  type        = any
+  default     = {}
+}
+
+################################################################################
 # Workspace SAML Configuration
 ################################################################################
 
@@ -192,24 +198,6 @@ variable "create_saml_configuration" {
   description = "Determines whether the SAML configuration will be created"
   type        = bool
   default     = true
-}
-
-variable "saml_editor_role_values" {
-  description = "SAML authentication editor role values"
-  type        = list(string)
-  default     = []
-}
-
-variable "saml_idp_metadata_url" {
-  description = "SAML authentication IDP Metadata URL. Note that either `saml_idp_metadata_url` or `saml_idp_metadata_xml`"
-  type        = string
-  default     = null
-}
-
-variable "saml_idp_metadata_xml" {
-  description = "SAML authentication IDP Metadata XML. Note that either `saml_idp_metadata_url` or `saml_idp_metadata_xml`"
-  type        = string
-  default     = null
 }
 
 variable "saml_admin_role_values" {
@@ -224,6 +212,12 @@ variable "saml_allowed_organizations" {
   default     = []
 }
 
+variable "saml_editor_role_values" {
+  description = "SAML authentication editor role values"
+  type        = list(string)
+  default     = []
+}
+
 variable "saml_email_assertion" {
   description = "SAML authentication email assertion"
   type        = string
@@ -232,6 +226,18 @@ variable "saml_email_assertion" {
 
 variable "saml_groups_assertion" {
   description = "SAML authentication groups assertion"
+  type        = string
+  default     = null
+}
+
+variable "saml_idp_metadata_url" {
+  description = "SAML authentication IDP Metadata URL. Note that either `saml_idp_metadata_url` or `saml_idp_metadata_xml`"
+  type        = string
+  default     = null
+}
+
+variable "saml_idp_metadata_xml" {
+  description = "SAML authentication IDP Metadata XML. Note that either `saml_idp_metadata_url` or `saml_idp_metadata_xml`"
   type        = string
   default     = null
 }

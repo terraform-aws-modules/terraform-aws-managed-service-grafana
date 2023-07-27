@@ -44,7 +44,6 @@ module "managed_grafana" {
     }
   })
 
-
   # vpc configuration
   vpc_configuration = {
     subnet_ids = module.vpc.private_subnets
@@ -137,7 +136,7 @@ module "managed_grafana_disabled" {
 
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
-  version = "~> 3.0"
+  version = "~> 5.0"
 
   name = local.name
   cidr = local.vpc_cidr
@@ -146,10 +145,8 @@ module "vpc" {
   private_subnets = [for k, v in local.azs : cidrsubnet(local.vpc_cidr, 4, k)]
   public_subnets  = [for k, v in local.azs : cidrsubnet(local.vpc_cidr, 8, k + 48)]
 
-  enable_nat_gateway      = false # disabling for example, re-evaluate for your environment
-  single_nat_gateway      = true
-  enable_dns_hostnames    = true
-  map_public_ip_on_launch = false
+  enable_nat_gateway = false # disabling for example, re-evaluate for your environment
+  single_nat_gateway = true
 
   tags = local.tags
 }
