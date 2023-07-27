@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/compare/v1.10.0...v2.0.0) (2023-07-27)
+
+
+### ⚠ BREAKING CHANGES
+
+* Add support for `network_access_control`, updated minimum supported version of Terraform to `1.0` and AWS provider to `5.0` (#25)
+
+### Features
+
+* Add support for `network_access_control`, updated minimum supported version of Terraform to `1.0` and AWS provider to `5.0` ([#25](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/issues/25)) ([9f025d9](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/commit/9f025d98e691951b8e9db3992aa8293a1b49d3cf))
+
 ## [1.10.0](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/compare/v1.9.0...v1.10.0) (2023-05-09)
 
 
