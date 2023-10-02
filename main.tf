@@ -265,6 +265,13 @@ data "aws_iam_policy_document" "this" {
         "aps:GetLabels",
         "aps:GetSeries",
         "aps:GetMetricMetadata",
+        "aps:ListRules",
+        "aps:ListAlertManagerSilences",
+        "aps:ListAlertManagerAlerts",
+        "aps:GetAlertManagerStatus",
+        "aps:ListAlertManagerAlertGroups",
+        "aps:PutAlertManagerSilences",
+        "aps:DeleteAlertManagerSilences"
       ]
       resources = ["*"]
     }

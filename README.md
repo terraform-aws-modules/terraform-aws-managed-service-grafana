@@ -186,6 +186,9 @@ No modules.
 | <a name="output_workspace_iam_role_arn"></a> [workspace\_iam\_role\_arn](#output\_workspace\_iam\_role\_arn) | IAM role ARN of the Grafana workspace |
 | <a name="output_workspace_iam_role_name"></a> [workspace\_iam\_role\_name](#output\_workspace\_iam\_role\_name) | IAM role name of the Grafana workspace |
 | <a name="output_workspace_iam_role_unique_id"></a> [workspace\_iam\_role\_unique\_id](#output\_workspace\_iam\_role\_unique\_id) | Stable and unique string identifying the IAM role |
+| <a name="output_workspace_iam_policy_arn"></a> [workspace\_iam\_policy\_arn](#output\_workspace\_iam\_policy\_arn) | IAM Policy ARN of the Grafana workspace |
+| <a name="output_workspace_iam_policy_name"></a> [workspace\_iam\_policy\_name](#output\_workspace\_iam\_policy\_name) | IAM Policy name of the Grafana workspace |
+| <a name="output_workspace_iam_policy_id"></a> [workspace\_iam\_policy\_id](#output\_workspace\_iam\_policy\_id) | Stable and unique string identifying the IAM Policy |
 | <a name="output_workspace_id"></a> [workspace\_id](#output\_workspace\_id) | The ID of the Grafana workspace |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
