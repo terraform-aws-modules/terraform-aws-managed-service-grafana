@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.1.0](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/compare/v2.0.0...v2.1.0) (2023-10-06)
+
+
+### Features
+
+* Add support for external integration with prometheus alertmanager for grafana ([#27](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/issues/27)) ([a4bd8f4](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/commit/a4bd8f4fa5bd3eef064c88c1ae0275663383a859))
+
 ## [2.0.0](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/compare/v1.10.0...v2.0.0) (2023-07-27)
 
 
