@@ -265,6 +265,18 @@ data "aws_iam_policy_document" "this" {
         "aps:GetLabels",
         "aps:GetSeries",
         "aps:GetMetricMetadata",
+      ]
+      resources = ["*"]
+    }
+  }
+
+  # Prometheus alerts
+  # https://docs.aws.amazon.com/prometheus/latest/userguide/integrating-grafana.html
+  dynamic "statement" {
+    for_each = contains(var.data_sources, "PROMETHEUS") && var.enable_alerts ? [1] : []
+
+    content {
+      actions = [
         "aps:ListRules",
         "aps:ListAlertManagerSilences",
         "aps:ListAlertManagerAlerts",

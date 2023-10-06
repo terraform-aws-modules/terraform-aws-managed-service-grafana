@@ -54,12 +54,13 @@ output "workspace_iam_role_unique_id" {
 # Workspace IAM Policy
 ################################################################################
 
-output "workspace_iam_policy_arn" {
-  description = "IAM Policy ARN of the Grafana workspace"
+output "workspace_iam_role_policy_arn" {
+  description = "IAM Policy ARN of the Grafana workspace IAM role"
   value       = try(aws_iam_policy.this[0].arn, null)
 }
-output "workspace_iam_policy_name" {
-  description = "IAM Policy name of the Grafana workspace"
+
+output "workspace_iam_role_policy_name" {
+  description = "IAM Policy name of the Grafana workspace IAM role"
   value       = try(aws_iam_policy.this[0].name, null)
 }
 
