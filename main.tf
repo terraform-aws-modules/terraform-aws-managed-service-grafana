@@ -270,6 +270,25 @@ data "aws_iam_policy_document" "this" {
     }
   }
 
+  # Prometheus alerts
+  # https://docs.aws.amazon.com/prometheus/latest/userguide/integrating-grafana.html
+  dynamic "statement" {
+    for_each = contains(var.data_sources, "PROMETHEUS") && var.enable_alerts ? [1] : []
+
+    content {
+      actions = [
+        "aps:ListRules",
+        "aps:ListAlertManagerSilences",
+        "aps:ListAlertManagerAlerts",
+        "aps:GetAlertManagerStatus",
+        "aps:ListAlertManagerAlertGroups",
+        "aps:PutAlertManagerSilences",
+        "aps:DeleteAlertManagerSilences"
+      ]
+      resources = ["*"]
+    }
+  }
+
   # SNS Notification
   dynamic "statement" {
     for_each = contains(var.notification_destinations, "SNS") ? [1] : []

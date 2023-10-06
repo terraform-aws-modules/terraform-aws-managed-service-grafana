@@ -180,6 +180,12 @@ variable "iam_role_tags" {
   default     = {}
 }
 
+variable "enable_alerts" {
+  description = "Determines whether IAM permissions for alerting are enabled for the workspace IAM role"
+  type        = bool
+  default     = false
+}
+
 ################################################################################
 # Workspace API Key
 ################################################################################

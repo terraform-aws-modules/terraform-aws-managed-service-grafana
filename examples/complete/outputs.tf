@@ -51,6 +51,25 @@ output "workspace_iam_role_unique_id" {
 }
 
 ################################################################################
+# Workspace IAM Policy
+################################################################################
+
+output "workspace_iam_role_policy_arn" {
+  description = "IAM Policy ARN of the Grafana workspace IAM role"
+  value       = module.managed_grafana.workspace_iam_role_policy_arn
+}
+
+output "workspace_iam_role_policy_name" {
+  description = "IAM Policy name of the Grafana workspace IAM role"
+  value       = module.managed_grafana.workspace_iam_role_policy_name
+}
+
+output "workspace_iam_role_policy_id" {
+  description = "Stable and unique string identifying the IAM Policy"
+  value       = module.managed_grafana.workspace_iam_role_policy_id
+}
+
+################################################################################
 # Workspace SAML Configuration
 ################################################################################
 

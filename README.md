@@ -128,6 +128,7 @@ No modules.
 | <a name="input_create_workspace"></a> [create\_workspace](#input\_create\_workspace) | Determines whether a workspace will be created or to use an existing workspace | `bool` | `true` | no |
 | <a name="input_data_sources"></a> [data\_sources](#input\_data\_sources) | The data sources for the workspace. Valid values are `AMAZON_OPENSEARCH_SERVICE`, `ATHENA`, `CLOUDWATCH`, `PROMETHEUS`, `REDSHIFT`, `SITEWISE`, `TIMESTREAM`, `XRAY` | `list(string)` | `[]` | no |
 | <a name="input_description"></a> [description](#input\_description) | The workspace description | `string` | `null` | no |
+| <a name="input_enable_alerts"></a> [enable\_alerts](#input\_enable\_alerts) | Determines whether IAM permissions for alerting are enabled for the workspace IAM role | `bool` | `false` | no |
 | <a name="input_grafana_version"></a> [grafana\_version](#input\_grafana\_version) | Specifies the version of Grafana to support in the new workspace. If not specified, the default version for the `aws_grafana_workspace` resource will be used. See `aws_grafana_workspace` documentation for available options. | `string` | `null` | no |
 | <a name="input_iam_role_arn"></a> [iam\_role\_arn](#input\_iam\_role\_arn) | Existing IAM role ARN for the workspace. Required if `create_iam_role` is set to `false` | `string` | `null` | no |
 | <a name="input_iam_role_description"></a> [iam\_role\_description](#input\_iam\_role\_description) | The description of the workspace IAM role | `string` | `null` | no |
@@ -185,6 +186,9 @@ No modules.
 | <a name="output_workspace_grafana_version"></a> [workspace\_grafana\_version](#output\_workspace\_grafana\_version) | The version of Grafana running on the workspace |
 | <a name="output_workspace_iam_role_arn"></a> [workspace\_iam\_role\_arn](#output\_workspace\_iam\_role\_arn) | IAM role ARN of the Grafana workspace |
 | <a name="output_workspace_iam_role_name"></a> [workspace\_iam\_role\_name](#output\_workspace\_iam\_role\_name) | IAM role name of the Grafana workspace |
+| <a name="output_workspace_iam_role_policy_arn"></a> [workspace\_iam\_role\_policy\_arn](#output\_workspace\_iam\_role\_policy\_arn) | IAM Policy ARN of the Grafana workspace IAM role |
+| <a name="output_workspace_iam_role_policy_id"></a> [workspace\_iam\_role\_policy\_id](#output\_workspace\_iam\_role\_policy\_id) | Stable and unique string identifying the IAM Policy |
+| <a name="output_workspace_iam_role_policy_name"></a> [workspace\_iam\_role\_policy\_name](#output\_workspace\_iam\_role\_policy\_name) | IAM Policy name of the Grafana workspace IAM role |
 | <a name="output_workspace_iam_role_unique_id"></a> [workspace\_iam\_role\_unique\_id](#output\_workspace\_iam\_role\_unique\_id) | Stable and unique string identifying the IAM role |
 | <a name="output_workspace_id"></a> [workspace\_id](#output\_workspace\_id) | The ID of the Grafana workspace |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
