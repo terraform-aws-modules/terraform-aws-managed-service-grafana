@@ -41,6 +41,9 @@ module "managed_grafana" {
   configuration = jsonencode({
     unifiedAlerting = {
       enabled = true
+    },
+    plugins = {
+      pluginAdminEnabled = false
     }
   })
 
