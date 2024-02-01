@@ -283,7 +283,7 @@ data "aws_iam_policy_document" "this" {
         "aps:GetAlertManagerStatus",
         "aps:ListAlertManagerAlertGroups",
         "aps:PutAlertManagerSilences",
-        "aps:DeleteAlertManagerSilences"
+        "aps:DeleteAlertManagerSilence"
       ]
       resources = ["*"]
     }
