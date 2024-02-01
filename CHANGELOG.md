@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+### [2.1.1](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/compare/v2.1.0...v2.1.1) (2024-02-01)
+
+
+### Bug Fixes
+
+* IAM policy to correct permission for deleting alert manager silence ([#29](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/issues/29)) ([8857168](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/commit/88571687dba922c69d1a8e0ae81c48fdb4c066ed))
+
 ## [2.1.0](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/compare/v2.0.0...v2.1.0) (2023-10-06)
 
 
