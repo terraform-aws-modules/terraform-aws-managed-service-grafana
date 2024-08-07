@@ -36,7 +36,7 @@ module "managed_grafana" {
   data_sources              = ["CLOUDWATCH", "PROMETHEUS", "XRAY"]
   notification_destinations = ["SNS"]
   stack_set_name            = local.name
-  grafana_version           = "9.4"
+  grafana_version           = "10.4"
 
   configuration = jsonencode({
     unifiedAlerting = {
@@ -76,6 +76,40 @@ module "managed_grafana" {
     admin = {
       key_name        = "admin"
       key_role        = "ADMIN"
+      seconds_to_live = 3600
+    }
+  }
+
+  # Workspace service accounts
+  workspace_service_accounts = {
+    viewer = {
+      sa_name      = "viewer"
+      grafana_role = "VIEWER"
+    }
+    editor = {
+      sa_name      = "editor"
+      grafana_role = "EDITOR"
+    }
+    admin = {
+      sa_name      = "admin"
+      grafana_role = "ADMIN"
+    }
+  }
+
+  workspace_sa_tokens = {
+    viewer = {
+      token_name      = "viewer"
+      sa_account      = "viewer"
+      seconds_to_live = 3600
+    }
+    editor = {
+      token_name      = "editor"
+      sa_account      = "editor"
+      seconds_to_live = 3600
+    }
+    admin = {
+      token_name      = "admin"
+      sa_account      = "admin"
       seconds_to_live = 3600
     }
   }

@@ -197,6 +197,34 @@ variable "workspace_api_keys" {
 }
 
 ################################################################################
+# Workspace Service Account
+################################################################################
+
+variable "create_service_account" {
+  description = "Determines whether a service account will be created"
+  type        = bool
+  default     = true
+}
+
+variable "create_sa_tokens" {
+  description = "Determines whether a service account token will be created"
+  type        = bool
+  default     = true
+}
+
+variable "workspace_service_accounts" {
+  description = "Map of workspace service account definitions to create"
+  type        = any
+  default     = {}
+}
+
+variable "workspace_sa_tokens" {
+  description = "Map of workspace service account tokens to create"
+  type        = any
+  default     = {}
+}
+
+################################################################################
 # Workspace SAML Configuration
 ################################################################################
 
