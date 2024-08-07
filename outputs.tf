@@ -32,6 +32,15 @@ output "workspace_api_keys" {
 }
 
 ################################################################################
+# Workspace serivce accounts token
+################################################################################
+
+output "workspace_sa_tokens" {
+  description = "The workspace API keys created including their attributes"
+  value       = { for k, v in aws_grafana_workspace_service_account_token.this : k => v.key }
+}
+
+################################################################################
 # Workspace IAM Role
 ################################################################################
 
