@@ -120,7 +120,7 @@ locals {
 }
 
 resource "aws_grafana_workspace_service_account" "this" {
-  for_each = { for k, v in var.workspace_sa_tokens : k => v if local.create_service_account }
+  for_each = { for k, v in var.workspace_service_accounts : k => v if local.create_service_account }
 
   name         = try(each.value.sa_name, each.key)
   grafana_role = each.value.grafana_role
