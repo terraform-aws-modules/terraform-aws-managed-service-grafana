@@ -111,7 +111,7 @@ resource "aws_grafana_workspace_api_key" "this" {
 }
 
 ################################################################################
-# Workspace Service Account 
+# Workspace Service Account
 ################################################################################
 
 locals {

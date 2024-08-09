@@ -69,6 +69,7 @@ No inputs.
 | <a name="output_workspace_iam_role_policy_name"></a> [workspace\_iam\_role\_policy\_name](#output\_workspace\_iam\_role\_policy\_name) | IAM Policy name of the Grafana workspace IAM role |
 | <a name="output_workspace_iam_role_unique_id"></a> [workspace\_iam\_role\_unique\_id](#output\_workspace\_iam\_role\_unique\_id) | Stable and unique string identifying the IAM role |
 | <a name="output_workspace_id"></a> [workspace\_id](#output\_workspace\_id) | The ID of the Grafana workspace |
+| <a name="output_workspace_sa_tokens"></a> [workspace\_sa\_tokens](#output\_workspace\_sa\_tokens) | The workspace API keys created including their attributes |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 Apache-2.0 Licensed. See [LICENSE](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/blob/main/LICENSE).
