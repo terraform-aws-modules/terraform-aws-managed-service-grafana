@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.2.0](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/compare/v2.1.2...v2.2.0) (2024-08-13)
+
+
+### Features
+
+* Add support for service account and service account token resources ([#36](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/issues/36)) ([6d2a78f](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/commit/6d2a78f62de815bb036e1b4aef22def3e5cde919))
+
 ## [2.1.2](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/compare/v2.1.1...v2.1.2) (2024-03-06)
 
 
