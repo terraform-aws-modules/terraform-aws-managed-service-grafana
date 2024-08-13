@@ -80,13 +80,13 @@ Examples codified under the [`examples`](https://github.com/terraform-aws-module
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 5.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 5.59 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 5.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 5.59 |
 
 ## Modules
 
@@ -125,10 +125,8 @@ No modules.
 | <a name="input_configuration"></a> [configuration](#input\_configuration) | The configuration string for the workspace | `string` | `null` | no |
 | <a name="input_create"></a> [create](#input\_create) | Determines whether a resources will be created | `bool` | `true` | no |
 | <a name="input_create_iam_role"></a> [create\_iam\_role](#input\_create\_iam\_role) | Determines whether a an IAM role is created or to use an existing IAM role | `bool` | `true` | no |
-| <a name="input_create_sa_tokens"></a> [create\_sa\_tokens](#input\_create\_sa\_tokens) | Determines whether a service account token will be created | `bool` | `true` | no |
 | <a name="input_create_saml_configuration"></a> [create\_saml\_configuration](#input\_create\_saml\_configuration) | Determines whether the SAML configuration will be created | `bool` | `true` | no |
 | <a name="input_create_security_group"></a> [create\_security\_group](#input\_create\_security\_group) | Determines if a security group is created | `bool` | `true` | no |
-| <a name="input_create_service_account"></a> [create\_service\_account](#input\_create\_service\_account) | Determines whether a service account will be created | `bool` | `true` | no |
 | <a name="input_create_workspace"></a> [create\_workspace](#input\_create\_workspace) | Determines whether a workspace will be created or to use an existing workspace | `bool` | `true` | no |
 | <a name="input_data_sources"></a> [data\_sources](#input\_data\_sources) | The data sources for the workspace. Valid values are `AMAZON_OPENSEARCH_SERVICE`, `ATHENA`, `CLOUDWATCH`, `PROMETHEUS`, `REDSHIFT`, `SITEWISE`, `TIMESTREAM`, `XRAY` | `list(string)` | `[]` | no |
 | <a name="input_description"></a> [description](#input\_description) | The workspace description | `string` | `null` | no |
@@ -174,7 +172,7 @@ No modules.
 | <a name="input_vpc_configuration"></a> [vpc\_configuration](#input\_vpc\_configuration) | The configuration settings for an Amazon VPC that contains data sources for your Grafana workspace to connect to | `any` | `{}` | no |
 | <a name="input_workspace_api_keys"></a> [workspace\_api\_keys](#input\_workspace\_api\_keys) | Map of workspace API key definitions to create | `any` | `{}` | no |
 | <a name="input_workspace_id"></a> [workspace\_id](#input\_workspace\_id) | The ID of an existing workspace to use when `create_workspace` is `false` | `string` | `""` | no |
-| <a name="input_workspace_sa_tokens"></a> [workspace\_sa\_tokens](#input\_workspace\_sa\_tokens) | Map of workspace service account tokens to create | `any` | `{}` | no |
+| <a name="input_workspace_service_account_tokens"></a> [workspace\_service\_account\_tokens](#input\_workspace\_service\_account\_tokens) | Map of workspace service account tokens to create | `any` | `{}` | no |
 | <a name="input_workspace_service_accounts"></a> [workspace\_service\_accounts](#input\_workspace\_service\_accounts) | Map of workspace service account definitions to create | `any` | `{}` | no |
 
 ## Outputs
@@ -197,7 +195,8 @@ No modules.
 | <a name="output_workspace_iam_role_policy_name"></a> [workspace\_iam\_role\_policy\_name](#output\_workspace\_iam\_role\_policy\_name) | IAM Policy name of the Grafana workspace IAM role |
 | <a name="output_workspace_iam_role_unique_id"></a> [workspace\_iam\_role\_unique\_id](#output\_workspace\_iam\_role\_unique\_id) | Stable and unique string identifying the IAM role |
 | <a name="output_workspace_id"></a> [workspace\_id](#output\_workspace\_id) | The ID of the Grafana workspace |
-| <a name="output_workspace_sa_tokens"></a> [workspace\_sa\_tokens](#output\_workspace\_sa\_tokens) | The workspace API keys created including their attributes |
+| <a name="output_workspace_service_account_tokens"></a> [workspace\_service\_account\_tokens](#output\_workspace\_service\_account\_tokens) | The workspace service account tokens created including their attributes |
+| <a name="output_workspace_service_accounts"></a> [workspace\_service\_accounts](#output\_workspace\_service\_accounts) | The workspace service accounts created including their attributes |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## License

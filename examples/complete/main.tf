@@ -5,7 +5,7 @@ provider "aws" {
 data "aws_availability_zones" "available" {}
 
 locals {
-  region      = "us-west-2"
+  region      = "us-east-1"
   name        = "amg-ex-${replace(basename(path.cwd), "_", "-")}"
   description = "AWS Managed Grafana service for ${local.name}"
 
@@ -83,34 +83,30 @@ module "managed_grafana" {
   # Workspace service accounts
   workspace_service_accounts = {
     viewer = {
-      sa_name      = "viewer"
       grafana_role = "VIEWER"
     }
     editor = {
-      sa_name      = "editor"
+      name         = "editor-example"
       grafana_role = "EDITOR"
     }
     admin = {
-      sa_name      = "admin"
       grafana_role = "ADMIN"
     }
   }
 
-  workspace_sa_tokens = {
+  workspace_service_account_tokens = {
     viewer = {
-      token_name      = "viewer-example"
-      sa_account      = "viewer"
-      seconds_to_live = 3600
+      service_account_key = "viewer"
+      seconds_to_live     = 3600
     }
     editor = {
-      token_name      = "editor-example"
-      sa_account      = "editor"
-      seconds_to_live = 3600
+      name                = "editor-example"
+      service_account_key = "editor"
+      seconds_to_live     = 3600
     }
     admin = {
-      token_name      = "admin-example"
-      sa_account      = "admin"
-      seconds_to_live = 3600
+      service_account_key = "admin"
+      seconds_to_live     = 3600
     }
   }
 

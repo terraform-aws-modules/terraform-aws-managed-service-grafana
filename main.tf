@@ -114,23 +114,19 @@ resource "aws_grafana_workspace_api_key" "this" {
 # Workspace Service Account
 ################################################################################
 
-locals {
-  create_service_account = var.create && var.create_service_account
-  create_sa_tokens       = var.create_sa_tokens && local.create_service_account
-}
-
 resource "aws_grafana_workspace_service_account" "this" {
-  for_each = { for k, v in var.workspace_service_accounts : k => v if local.create_service_account }
+  for_each = { for k, v in var.workspace_service_accounts : k => v if var.create }
 
-  name         = try(each.value.sa_name, each.key)
+  name         = try(each.value.name, each.key)
   grafana_role = each.value.grafana_role
   workspace_id = local.workspace_id
 }
 
 resource "aws_grafana_workspace_service_account_token" "this" {
-  for_each           = { for k, v in var.workspace_sa_tokens : k => v if local.create_sa_tokens }
-  name               = try(each.value.token_name, each.key)
-  service_account_id = aws_grafana_workspace_service_account.this[each.value.sa_account].service_account_id
+  for_each = { for k, v in var.workspace_service_account_tokens : k => v if var.create }
+
+  name               = try(each.value.name, each.key)
+  service_account_id = try(aws_grafana_workspace_service_account.this[each.value.service_account_key].service_account_id, each.value.service_account_id)
   seconds_to_live    = each.value.seconds_to_live
   workspace_id       = local.workspace_id
 }
