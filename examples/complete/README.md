@@ -24,13 +24,13 @@ Note that this example may create resources which will incur monetary charges on
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 5.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 5.59 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 5.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 5.59 |
 
 ## Modules
 
@@ -69,6 +69,8 @@ No inputs.
 | <a name="output_workspace_iam_role_policy_name"></a> [workspace\_iam\_role\_policy\_name](#output\_workspace\_iam\_role\_policy\_name) | IAM Policy name of the Grafana workspace IAM role |
 | <a name="output_workspace_iam_role_unique_id"></a> [workspace\_iam\_role\_unique\_id](#output\_workspace\_iam\_role\_unique\_id) | Stable and unique string identifying the IAM role |
 | <a name="output_workspace_id"></a> [workspace\_id](#output\_workspace\_id) | The ID of the Grafana workspace |
+| <a name="output_workspace_service_account_tokens"></a> [workspace\_service\_account\_tokens](#output\_workspace\_service\_account\_tokens) | The workspace service account tokens created including their attributes |
+| <a name="output_workspace_service_accounts"></a> [workspace\_service\_accounts](#output\_workspace\_service\_accounts) | The workspace service accounts created including their attributes |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 Apache-2.0 Licensed. See [LICENSE](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/blob/main/LICENSE).

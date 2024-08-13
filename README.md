@@ -80,13 +80,13 @@ Examples codified under the [`examples`](https://github.com/terraform-aws-module
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 5.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 5.59 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 5.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 5.59 |
 
 ## Modules
 
@@ -101,6 +101,8 @@ No modules.
 | [aws_grafana_workspace.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/grafana_workspace) | resource |
 | [aws_grafana_workspace_api_key.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/grafana_workspace_api_key) | resource |
 | [aws_grafana_workspace_saml_configuration.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/grafana_workspace_saml_configuration) | resource |
+| [aws_grafana_workspace_service_account.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/grafana_workspace_service_account) | resource |
+| [aws_grafana_workspace_service_account_token.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/grafana_workspace_service_account_token) | resource |
 | [aws_iam_policy.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
 | [aws_iam_role.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
 | [aws_iam_role_policy_attachment.additional](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
@@ -170,6 +172,8 @@ No modules.
 | <a name="input_vpc_configuration"></a> [vpc\_configuration](#input\_vpc\_configuration) | The configuration settings for an Amazon VPC that contains data sources for your Grafana workspace to connect to | `any` | `{}` | no |
 | <a name="input_workspace_api_keys"></a> [workspace\_api\_keys](#input\_workspace\_api\_keys) | Map of workspace API key definitions to create | `any` | `{}` | no |
 | <a name="input_workspace_id"></a> [workspace\_id](#input\_workspace\_id) | The ID of an existing workspace to use when `create_workspace` is `false` | `string` | `""` | no |
+| <a name="input_workspace_service_account_tokens"></a> [workspace\_service\_account\_tokens](#input\_workspace\_service\_account\_tokens) | Map of workspace service account tokens to create | `any` | `{}` | no |
+| <a name="input_workspace_service_accounts"></a> [workspace\_service\_accounts](#input\_workspace\_service\_accounts) | Map of workspace service account definitions to create | `any` | `{}` | no |
 
 ## Outputs
 
@@ -191,6 +195,8 @@ No modules.
 | <a name="output_workspace_iam_role_policy_name"></a> [workspace\_iam\_role\_policy\_name](#output\_workspace\_iam\_role\_policy\_name) | IAM Policy name of the Grafana workspace IAM role |
 | <a name="output_workspace_iam_role_unique_id"></a> [workspace\_iam\_role\_unique\_id](#output\_workspace\_iam\_role\_unique\_id) | Stable and unique string identifying the IAM role |
 | <a name="output_workspace_id"></a> [workspace\_id](#output\_workspace\_id) | The ID of the Grafana workspace |
+| <a name="output_workspace_service_account_tokens"></a> [workspace\_service\_account\_tokens](#output\_workspace\_service\_account\_tokens) | The workspace service account tokens created including their attributes |
+| <a name="output_workspace_service_accounts"></a> [workspace\_service\_accounts](#output\_workspace\_service\_accounts) | The workspace service accounts created including their attributes |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## License
