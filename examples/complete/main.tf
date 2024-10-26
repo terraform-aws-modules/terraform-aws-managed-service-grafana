@@ -1,6 +1,5 @@
 provider "aws" {
-  region                   = local.region
-  shared_credentials_files = ["~/.aws/credentials"]
+  region = local.region
 }
 
 data "aws_availability_zones" "available" {}
@@ -148,14 +147,14 @@ module "managed_grafana" {
   tags = local.tags
 }
 
-#module "managed_grafana_default" {
-#  source = "../.."
-#
-#  name              = "${local.name}-default"
-#  associate_license = false
-#
-#  tags = local.tags
-#}
+module "managed_grafana_default" {
+  source = "../.."
+
+  name              = "${local.name}-default"
+  associate_license = false
+
+  tags = local.tags
+}
 
 module "managed_grafana_disabled" {
   source = "../.."

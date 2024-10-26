@@ -37,6 +37,7 @@ Note that this example may create resources which will incur monetary charges on
 | Name | Source | Version |
 |------|--------|---------|
 | <a name="module_managed_grafana"></a> [managed\_grafana](#module\_managed\_grafana) | ../.. | n/a |
+| <a name="module_managed_grafana_default"></a> [managed\_grafana\_default](#module\_managed\_grafana\_default) | ../.. | n/a |
 | <a name="module_managed_grafana_disabled"></a> [managed\_grafana\_disabled](#module\_managed\_grafana\_disabled) | ../.. | n/a |
 | <a name="module_vpc"></a> [vpc](#module\_vpc) | terraform-aws-modules/vpc/aws | ~> 5.0 |
 
