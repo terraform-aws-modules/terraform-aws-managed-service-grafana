@@ -39,7 +39,6 @@ output "workspace_api_keys" {
 output "workspace_service_accounts" {
   description = "The workspace service accounts created including their attributes"
   value       = module.managed_grafana.workspace_service_accounts
-  sensitive   = true
 }
 
 output "workspace_service_account_tokens" {
