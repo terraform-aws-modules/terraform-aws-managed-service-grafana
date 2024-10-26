@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.2.1](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/compare/v2.2.0...v2.2.1) (2024-10-26)
+
+
+### Bug Fixes
+
+* Output for `workspace_service_accounts` ([#42](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/issues/42)) ([911b74b](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/commit/911b74b1157d0d68f68441a10a828b9ba618b536))
+* Update CI workflow versions to latest ([#40](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/issues/40)) ([fc86ff8](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/commit/fc86ff814e6749b9dda5cf4a8c36b5fd1df5cb82))
+
 ## [2.2.0](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/compare/v2.1.2...v2.2.0) (2024-08-13)
 
 
