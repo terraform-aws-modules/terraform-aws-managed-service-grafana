@@ -80,13 +80,13 @@ Examples codified under the [`examples`](https://github.com/terraform-aws-module
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 5.59 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 5.63 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 5.59 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 5.63 |
 
 ## Modules
 
@@ -131,6 +131,7 @@ No modules.
 | <a name="input_data_sources"></a> [data\_sources](#input\_data\_sources) | The data sources for the workspace. Valid values are `AMAZON_OPENSEARCH_SERVICE`, `ATHENA`, `CLOUDWATCH`, `PROMETHEUS`, `REDSHIFT`, `SITEWISE`, `TIMESTREAM`, `XRAY` | `list(string)` | `[]` | no |
 | <a name="input_description"></a> [description](#input\_description) | The workspace description | `string` | `null` | no |
 | <a name="input_enable_alerts"></a> [enable\_alerts](#input\_enable\_alerts) | Determines whether IAM permissions for alerting are enabled for the workspace IAM role | `bool` | `false` | no |
+| <a name="input_grafana_token"></a> [grafana\_token](#input\_grafana\_token) | A token from Grafana Labs that ties your AWS account with a Grafana Labs account | `string` | `null` | no |
 | <a name="input_grafana_version"></a> [grafana\_version](#input\_grafana\_version) | Specifies the version of Grafana to support in the new workspace. If not specified, the default version for the `aws_grafana_workspace` resource will be used. See `aws_grafana_workspace` documentation for available options. | `string` | `null` | no |
 | <a name="input_iam_role_arn"></a> [iam\_role\_arn](#input\_iam\_role\_arn) | Existing IAM role ARN for the workspace. Required if `create_iam_role` is set to `false` | `string` | `null` | no |
 | <a name="input_iam_role_description"></a> [iam\_role\_description](#input\_iam\_role\_description) | The description of the workspace IAM role | `string` | `null` | no |

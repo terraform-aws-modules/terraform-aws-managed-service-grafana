@@ -399,8 +399,9 @@ resource "aws_grafana_workspace_saml_configuration" "this" {
 resource "aws_grafana_license_association" "this" {
   count = var.create && var.associate_license ? 1 : 0
 
-  license_type = var.license_type
-  workspace_id = local.workspace_id
+  grafana_token = var.grafana_token
+  license_type  = var.license_type
+  workspace_id  = local.workspace_id
 }
 
 ################################################################################
