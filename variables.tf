@@ -310,6 +310,12 @@ variable "license_type" {
   default     = "ENTERPRISE"
 }
 
+variable "grafana_token" {
+  description = "A token from Grafana Labs that ties your AWS account with a Grafana Labs account"
+  type        = string
+  default     = null
+}
+
 ################################################################################
 # Role Association
 ################################################################################
