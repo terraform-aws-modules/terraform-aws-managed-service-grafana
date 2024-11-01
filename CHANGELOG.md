@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.3.0](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/compare/v2.2.1...v2.3.0) (2024-11-01)
+
+
+### Features
+
+* Support `aws_grafana_license_association.grafana_token` ([#43](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/issues/43)) ([ce90f62](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/commit/ce90f62734238ec10e1c7f86720220384f1b7d06))
+
 ## [2.2.1](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/compare/v2.2.0...v2.2.1) (2024-10-26)
 
 
