@@ -29,6 +29,7 @@ output "workspace_grafana_version" {
 output "workspace_api_keys" {
   description = "The workspace API keys created including their attributes"
   value       = aws_grafana_workspace_api_key.this
+  sensitive   = true
 }
 
 ################################################################################
