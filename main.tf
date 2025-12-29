@@ -113,11 +113,13 @@ resource "aws_grafana_workspace_api_key" "this" {
 ################################################################################
 # Workspace Service Account
 ################################################################################
+
 resource "time_rotating" "servic_account_token" {
   for_each = { for k, v in var.workspace_service_account_tokens : k => v if var.create }
 
   rotation_minutes = each.value.seconds_to_live / 60
 }
+
 resource "aws_grafana_workspace_service_account" "this" {
   for_each = { for k, v in var.workspace_service_accounts : k => v if var.create }
 
@@ -135,7 +137,7 @@ resource "aws_grafana_workspace_service_account_token" "this" {
   workspace_id       = local.workspace_id
 
   lifecycle {
-    replace_triggered_by = [ time_rotating.servic_account_token[each.key] ]
+    replace_triggered_by = [time_rotating.servic_account_token[each.key]]
   }
 }
 
