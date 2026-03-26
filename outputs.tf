@@ -43,6 +43,7 @@ output "workspace_service_accounts" {
 output "workspace_service_account_tokens" {
   description = "The workspace service account tokens created including their attributes"
   value       = aws_grafana_workspace_service_account_token.this
+  sensitive   = true
 }
 
 ################################################################################
