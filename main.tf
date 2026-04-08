@@ -18,6 +18,7 @@ resource "aws_grafana_workspace" "this" {
   data_sources             = var.data_sources
   description              = var.description
   grafana_version          = var.grafana_version
+  kms_key_id               = var.kms_key_id
   name                     = var.name
 
   dynamic "network_access_control" {

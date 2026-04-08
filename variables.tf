@@ -62,6 +62,12 @@ variable "grafana_version" {
   default     = null
 }
 
+variable "kms_key_id" {
+  description = "The ARN of the AWS KMS key for encrypting workspace data."
+  type        = string
+  default     = null
+}
+
 variable "name" {
   description = "The Grafana workspace name"
   type        = string
