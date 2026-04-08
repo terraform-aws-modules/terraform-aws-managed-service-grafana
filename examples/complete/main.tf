@@ -37,6 +37,7 @@ module "managed_grafana" {
   notification_destinations = ["SNS"]
   stack_set_name            = local.name
   grafana_version           = "10.4"
+  kms_key_id                = module.kms.key_arn
 
   configuration = jsonencode({
     unifiedAlerting = {
@@ -180,6 +181,15 @@ module "vpc" {
 
   enable_nat_gateway = false # disabling for example, re-evaluate for your environment
   single_nat_gateway = true
+
+  tags = local.tags
+}
+
+module "kms" {
+  source  = "terraform-aws-modules/kms/aws"
+  version = "~> 4.0"
+
+  description = "AWS Managed Grafana KMS Key"
 
   tags = local.tags
 }
