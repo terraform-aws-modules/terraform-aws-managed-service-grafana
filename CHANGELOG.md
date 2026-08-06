@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.3.2](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/compare/v2.3.1...v2.3.2) (2026-08-06)
+
+### Bug Fixes
+
+* Update GitHub Actions and pre-commit hook versions ([#51](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/issues/51)) ([2a6aac3](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/commit/2a6aac3ebe6a3bb829c8fc9eaec07d156fb1746c))
+
 ## [2.3.1](https://github.com/terraform-aws-modules/terraform-aws-managed-service-grafana/compare/v2.3.0...v2.3.1) (2025-10-21)
 
 ### Bug Fixes
